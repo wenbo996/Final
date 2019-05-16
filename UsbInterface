@@ -1,0 +1,14 @@
+UsbSerialInterface.UsbReadCallback mCallback = new UsbSerialInterface.UsbReadCallback() { 
+     //Defining a Callback which triggers whenever data is read.
+        @Override
+        public void onReceivedData(byte[] arg0) {
+            String data = null;
+            try {
+                data = new String(arg0, "UTF-8");
+                data.concat("/n");
+                tvAppend(textView, data);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+    };
